@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROPS</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/header.js" defer></script>
+    <script src="./assets/js/split.min.js"></script>
+    <script src="./assets/js/main.js" defer></script>
+    
+    <!--meta-->
+	<meta name="Author" content="최혜은">
+    <meta name="description" content="Welcome to our furniture Shop, where timeless and stylish designs meet storytelling.">
+    <meta name="twitter:description" content="Welcome to our furniture Shop, where timeless and stylish designs meet storytelling.">
+    <meta property="og:description" content="Welcome to our furniture Shop, where timeless and stylish designs meet storytelling.">
+    <meta name="application-name" content="Props">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Props">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://props.studiolumio.com/">
+    <meta name="twitter:title" content="Props">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Props">
+    <meta property="og:site_name" content="Props">
+    <meta property="og:url" content="https://props.studiolumio.com/">
+</head>
+<body>
+    <div id="skipNav">
+        <a href="#main">Go to main page</a>
+    </div>
+    <style>
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #f4f0ea;
+            z-index: 99;
+        }
+        .loading-inner {
+            padding: 100px;
+        }
+        .loading .text {
+            position: relative;
+            font-size: 100px;
+            text-align: center;
+            overflow: hidden;
+            color: #4d3d30;
+            font-weight: 400;
+            line-height: 113%;
+            letter-spacing: -.05em;
+        }
+        .loading .text .curr {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        .loading .text .end {
+            opacity: 0;
+            visibility: visible;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        .loading .text .end.on {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loading .text .logo-text {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            transform: translateY(100%);
+        }
+        .loading .thumb-box {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 0px auto;
+            overflow: hidden;
+    
+        }
+        .loading .thumb-box img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateX(-100%);
+        }
+        
+    </style>
+
+    <div class="loading">
+        <div class="loading-inner">
+            <div class="thumb-box">
+                <img src="./assets/images/preloader.jpeg" alt="preload">
+                <img src="./assets/images/preloader.jpeg" alt="preload">
+                <img src="./assets/images/preloader.jpeg" alt="preload">
+                <img src="./assets/images/preloader.jpeg" alt="preload">
+                <img src="./assets/images/preloader.jpeg" alt="preload">
+                <img src="./assets/images/preloader.jpeg" alt="preload">
+                <img src="./assets/images/preloader.jpeg" alt="preload">
+            </div>
+            <div class="text">
+                <span class="curr">0%</span>
+                <span class="end">
+                    <span class="char">1</span>
+                    <span class="char">0</span>
+                    <span class="char">0</span>
+                    <span class="char">%</span>
+                </span>
+                <div class="logo-text">
+                    <span class="char">P</span>
+                    <span class="char">R</span>
+                    <span class="char">O</span>
+                    <span class="char">P</span>
+                    <span class="char">S</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="dimmed"></div>
+    <header id="header">
+        <nav class="header-inner">
+            <a href="" class="logo">PROPS</a>
+
+            <div class="header-menu">
+                <button class="menu-toggle" aria-expanded="false" aria-label="확장메뉴">
+                    <span class="menu-icon">
+                        <span class="top"></span>
+                        <span class="bottom"></span>
+                    </span>
+                    <p class="menu-text">
+                        <span class="open">MENU</span>
+                        <span class="close">CLOSE</span>
+                    </p>
+                </button>
+            </div>
+
+            <div class="header-util">
+                <a href="" class="shop-link">SHOP</a>
+                <button class="cart-toggle">
+                    <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.66602 1.66667H2.75449C2.9595 1.66667 3.06201 1.66667 3.1445 1.70437C3.2172 1.73759 3.2788 1.79102 3.32197 1.85829C3.37096 1.93462 3.38546 2.0361 3.41445 2.23905L3.80887 5M3.80887 5L4.68545 11.4428C4.79669 12.2604 4.85231 12.6692 5.04777 12.977C5.22 13.2481 5.46692 13.4637 5.75881 13.5978C6.09007 13.75 6.50264 13.75 7.32777 13.75H14.4593C15.2448 13.75 15.6375 13.75 15.9585 13.6087C16.2415 13.4841 16.4842 13.2832 16.6596 13.0285C16.8585 12.7397 16.9319 12.3539 17.0789 11.5823L18.1819 5.79141C18.2337 5.51984 18.2595 5.38405 18.222 5.27792C18.1892 5.18481 18.1243 5.1064 18.039 5.05668C17.9417 5 17.8035 5 17.527 5H3.80887ZM8.33268 17.5C8.33268 17.9602 7.95959 18.3333 7.49935 18.3333C7.03911 18.3333 6.66602 17.9602 6.66602 17.5C6.66602 17.0398 7.03911 16.6667 7.49935 16.6667C7.95959 16.6667 8.33268 17.0398 8.33268 17.5ZM14.9993 17.5C14.9993 17.9602 14.6263 18.3333 14.166 18.3333C13.7058 18.3333 13.3327 17.9602 13.3327 17.5C13.3327 17.0398 13.7058 16.6667 14.166 16.6667C14.6263 16.6667 14.9993 17.0398 14.9993 17.5Z" stroke="#4D3D30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span>CART(0)</span>
+                </button>
+            </div>
+        </nav>
+
+        <nav class="gnb">
+            <div class="gnb-inner">
+                <ul class="nav-list">
+                    <li class="nav-item" aria-selected="true">
+                        <a href="">HOME</a>
+                    </li>
+                    <li class="nav-item" aria-selected="false">
+                        <a href="">SHOP</a>
+                    </li>
+                    <li class="nav-item" aria-selected="false">
+                        <a href="">ABOUT US</a>
+                    </li>
+                    <li class="nav-item" aria-selected="false">
+                        <a href="">LOOKBOOK</a>
+                    </li>
+                    <li class="nav-item" aria-selected="false">
+                        <a href="">CONTACT</a>
+                    </li>
+                </ul>
+                <div class="nav-root">
+                    <div class="root-made">
+                        <span class="title">MADE BY:</span>
+                        <a href="" class="name">STUDIO LUMIO</a>
+                    </div>
+                    <div class="root-typo">
+                        <span class="title">TYPOGRAPHY:</span>
+                        <a href="" class="name">GOOGLE FONTS</a>
+                    </div>
+                    <div class="root-img">
+                        <span class="title">IMAGES:</span>
+                        <a href="" class="name">FREEPIK, ENVATO</a>
+                    </div>
+                    <div class="root-info">
+                        <a href="" class="contact">PRIVACY POLICY</a>
+                        <a href="" class="contact">TERMS & CONDITIONS</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" class="container"> 
+
+        <section class="sc-hero">
+            <div class="hero-bg">
+                <video width="1440" height="1440" autoplay="" playsinline="" loop="" poster="./assets/images/home_dmgpke.mp4" muted preload="auto">
+                    <source src="./assets/images/home_dmgpke.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+
+            <div class="hero-content">
+                <h1 class="content-main">
+                    <p>PROPS</p>
+                </h1>
+
+                <div class="content-collect">
+                    <div class="collect-desc">
+                        <p>ADD ELEGANCE AND CHARM TO YOUR</p>
+                        <p>SPACE WITH FURNITURE THAT</p>
+                        <p>EXPRESSES YOUR INDIVIDUALITY</p>
+                    </div>
+                    <a href="" class="btn-more white">
+                        <span class="text">EXPLORE COLLECTION</span>
+                        <span class="svg">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="#1B1816" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div data-scroll="object1">
+                    <div class="content-paragraph">
+                        <p class="title">
+                            <span>WHERE STYLE</span>
+                            <br>
+                            <span>ENDURES: TIMELESS</span>
+                            <br>
+                            <span>FURNITURE FOR</span>
+                            <br>
+                            <span>YOUR STORY</span>
+                        </p>
+                    </div>
+                    <div class="content-recommend">
+                        <div class="recommend-product">
+                            <a href="" class="link">
+                                <img src="./assets/images/hero_product1.png" width="480" alt="Fully rounded table">
+                            </a>
+                        </div>
+                        <strong class="title">PRODUCT OF THE DAY</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sc-hero-about">
+            <h2 class="blind">PROPS Story</h2>
+
+            <div class="about-thumb">
+                <div class="thumb-img1" data-scroll="object2" data-y="-5">
+                    <img src="./assets/images/hero_product2.png" alt="product">
+                </div>
+                <div class="thumb-img2" data-scroll="object2" data-y="-30">
+                    <img src="./assets/images/hero_product3.png" alt="product">
+                </div>
+            </div>
+
+            <div class="about-text">
+                <strong class="title">
+                    WELCOME TO OUR FURNITURE SHOP, WHERE TIMELESS AND STYLISH DESIGNS MEET STORYTELLING.
+                </strong>
+                <p class="desc">
+                    <span>Every piece of furniture in our collection</span>
+                    <span>tells a personal story. Custom-designed</span>
+                    <span>and personalized to enhance your home's</span>
+                    <span>aesthetics.</span>
+                </p>
+
+                <a href="" class="btn-more">
+                    <span class="text">ABOUT US</span>
+                    <span class="svg">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+
+        <section class="sc-featured">
+            <h2 class="sub-title">FEATURED PRODUCTS</h2>
+            <div class="featured-box">
+                <ul>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/featured1.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">SIMPLE TABLE
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$520.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/featured2.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">WOODEN QUAD_SHELF
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$900.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/featured3.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">CURVED OAK CHAIR
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$900.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/featured4.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">PLUSH WHITE CHAIR
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$980.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/featured5.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">STACK SHELVES
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$750.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/featured6.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">ARC-LEG TABLE
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$1,020.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="sc-showcase">
+            <h2 class="blind">Shop Showcase</h2>
+            <div class="showcase-inner">
+                <ul class="showcase-list">
+                    <li class="showcase-item">
+                        <div class="content-thumb">
+                            <div class="back"><img src="./assets/images/showcase_product2.png" alt="CHAIRS"></div>
+                            <div class="front"><img src="./assets/images/showcase_product1.jpg" alt="CHAIRS"></div>
+                        </div>
+                        <div class="content-text">
+                            <strong class="title">CHAIRS</strong>
+                            <a href="" class="btn-more">
+                                <span class="text">SHOP CHAIRS</span>
+                                <span class="svg">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                </span>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="showcase-item">
+                        <div class="content-thumb">
+                            <div class="back"><img src="./assets/images/showcase_product3.png" alt="TABLES"></div>
+                            <div class="front"><img src="./assets/images/showcase_product4.png" alt="TABLES"></div>
+                        </div>
+                        <div class="content-text">
+                            <p class="title">TABLES</p>
+                            <a href="" class="btn-more">
+                                <span class="text">SHOP TABLES</span>
+                                <span class="svg">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                </span>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="showcase-item">
+                        <div class="content-thumb">
+                            <div class="back"><img src="./assets/images/showcase_product5.png" alt="LAMPS"></div>
+                            <div class="front"><img src="./assets/images/showcase_product6.webp" alt="LAMPS"></div>
+                        </div>
+                        <div class="content-text">
+                            <p class="title">LAMPS</p>
+                            <a href="" class="btn-more">
+                                <span class="text">SHOP LAMPS</span>
+                                <span class="svg">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                </span>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="showcase-item">
+                        <div class="content-thumb">
+                            <div class="back"><img src="./assets/images/showcase_product7.png" alt="SHELVES"></div>
+                            <div class="front"><img src="./assets/images/showcase_product8.webp" alt="SHELVES"></div>
+                        </div>
+                        <div class="content-text">
+                            <p class="title">SHELVES</p>
+                            <a href="" class="btn-more">
+                                <span class="text">SHOP SHELVES</span>
+                                <span class="svg">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                </span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+        <section class="sc-showcase-about">
+            <h2 class="blind">PROPS Product story</h2>
+            <div class="about-thumb">
+                <div class="bg">
+                    <img src="./assets/images/showcase_product1.jpg" alt>
+                </div>
+            </div>
+
+            <div class="about-desc">
+                <p>Since</p>
+                <strong class="year">1985</strong>
+                <p class="more">
+                    We create furniture masterpieces that
+                    <br>
+                    tell stories and store memories that
+                    <br>
+                    don’t fade with trends.
+                </p>
+                <a href="" class="btn-more">
+                    <span class="text">EXPLORE COLLECTION</span>
+                        <span class="svg">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </span>
+                </a>
+            </div>
+
+        </section>
+
+        <section class="sc-arrival">
+            <h2 class="sub-title">LASTEST PRODUCTS</h2>
+            <div class="arrival-box">
+                <ul>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/arrival1.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">POXOUS CHAIR
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$875.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/arrival2.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">COMFY CUSHION CHAIR
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$1,350.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/arrival3.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">COFFEE TABLE
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$940.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/arrival4.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">STACKED ROTATED SHELVES
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$800.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/arrival5.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">COMPONENT SHELF
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$700.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="link">
+                            <div class="thumb"><img src="./assets/images/arrival6.png" alt="product"></div>
+                            <div class="desc">
+                                <p class="title">POT TABLE LAMP
+                                    <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                </p>
+                                <strong class="price">$200.00</strong>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="arrival-bottom">
+                <a href="" class="btn-more">
+                    <span class="text">SHOP LATEST ARRIVALS
+                    </span>
+                        <span class="svg">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </span>
+                </a>
+            </div>
+        </section>
+
+        <section class="sc-briefing">
+            <h2 class="blind">PROPS briefing</h2>
+            <div class="briefing-area"> 
+                <div class="col-left"><img src="./assets/images/briefing1.png" alt></div>
+                <div class="col-right">
+                    <p class="desc">
+                        At Props, we believe that your space should be your sanctuary. We are committed to creating furniture that transcends being just props and actively contributes to that.
+                    </p>
+                    <a href="" class="btn-more">
+                        <span class="text">LOOKBOOK</span>
+                        <span class="svg">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="sc-newsletter">
+            <h2 class="newsletter-text">
+                <span>SUBSCRIBE</span>
+                <span>TO</span>
+                <span>OUR</span>
+                <span>NEWSLETTER</span>
+            </h2>
+            <div class="newsletter-card">
+                <p class="card-paragraph">
+                    Never miss out, Stay updated
+                </p>
+                <div class="card-input">
+                    <form action="">
+                        <fieldset>
+                            <legend class="blind">Newsletter reception</legend>
+                            <input type="text" placeholder="@email.com">
+                            <span class="btn-submit" role="button" aria-label="send email">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.16699 7H12.8337M12.8337 7L7.00033 1.16667M12.8337 7L7.00033 12.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                            </span>
+                    </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer id="footer">
+        <h2 class="blind">PROPS footer</h2>
+        <div class="footer-bg">
+           <img src="./assets/images/footer.webp" alt>
+        </div>
+        <div class="footer-content">
+            <div class="content-navi">
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">SHOP</a></li>
+                    <li><a href="">ABOUT US</a></li>
+                </ul>
+                <ul>
+                    <li><a href="">TABLES</a></li>
+                    <li><a href="">CHAIRS</a></li>
+                    <li><a href="">LAMPS</a></li>
+                </ul>
+                <ul>
+                    <li><a href="">SHOP ALL</a></li>
+                    <li><a href="">LOOKBOOK</a></li>
+                    <li><a href="">FEATURED</a></li>
+                </ul>
+                <ul>
+                    <li><a href="">CONTACT</a></li>
+                    <li><a href="">PRIVACY POLICY</a></li>
+                    <li><a href="">TERMS & CONDITIONS</a></li>
+                </ul>
+            </div>
+            <div class="content-sns">
+                <ul>
+                    <li><a href="">AWWWARDS</a></li>
+                    <li><a href="">TWITTER</a></li>
+                    <li><a href="">INSTAGRAM</a></li>
+                </ul>
+            </div>
+        </div>
+        <strong class="logo_f">PROPS</strong>
+        <div class="aside">
+            <small>©2023</small>
+            <div class="copyright">
+                <p>
+                    <span>MADE BY:</span>
+                    <a href="">STUDIO LUMIO</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

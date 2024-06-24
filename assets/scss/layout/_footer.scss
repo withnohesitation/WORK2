@@ -1,0 +1,101 @@
+#footer { 
+    padding: 10px;
+    background-size: cover;
+    position: relative;
+}
+.footer-bg {
+    overflow: hidden;
+    position: absolute;
+    background: #4d3d30;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    top: 10px;
+    object-fit: cover;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    img {
+        width: 120%;
+        height: 120%;
+        object-fit: cover;
+        
+    }
+}
+
+.footer-content {
+    position: relative;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: .57fr 1fr;
+    grid-gap: 30px;
+    gap: 30px;
+    .content-navi {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 30px 20px;
+        gap: 30px 20px;
+        @include mobile {
+            grid-template-columns: repeat(2,1fr);
+        }
+        li {
+            margin-bottom: 8px;
+            a {
+                white-space: nowrap;
+                font-weight: 300;
+                text-transform: uppercase;
+                color: #ddd4c6;
+                font-size: 13px;
+                letter-spacing: -.03em;
+            }
+        }
+    }
+    .content-sns {
+        text-align: right;
+        ul {
+            li{
+                margin-bottom: 8px;
+                a {
+                    white-space: nowrap;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    color: #ddd4c6;
+                    font-size: 13px;
+                    letter-spacing: -.03em;
+                }
+            }
+        }
+    }
+}
+.logo_f {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 15rem 0;
+    color: #f4f0ea;
+    text-transform: uppercase;
+    font-size: 60px;
+}
+.aside {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    background: rgba(12,21,20,.3);
+    padding: 0 10px;
+    padding-block: 16px;
+    small{
+        font-size: 13px;
+        letter-spacing: -.03em;
+    }
+    p {
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #f4f0ea;
+        line-height: 1.2;
+        font-size: 13px;
+        letter-spacing: -.03em;
+        
+    }
+}
