@@ -1,3 +1,77 @@
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #f4f0ea;
+    z-index: 99;
+}
+.loading-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: max(10px,1.6rem);
+    gap: max(10px,1.6rem);
+    .thumb-box {
+        position: relative;
+        height: max(200px,40rem);
+        aspect-ratio: .8337408313;
+        object-fit: cover;
+        overflow: hidden;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateX(-110%);
+        }
+    }
+    .text {
+        position: relative;
+        font-size: max(60px,20rem);
+        text-align: center;
+        overflow: hidden;
+        color: #4d3d30;
+        font-weight: 400;
+        line-height: 113%;
+        letter-spacing: -.05em;
+    }
+    .curr {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .end {
+        opacity: 0;
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        &.on {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .logo-text {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        transform: translateY(100%);
+    }
+}
+
 .sc-hero {
     position: relative;
     height: 144rem;
@@ -7,7 +81,6 @@
         background: #4d3d30;
         overflow: hidden;
         transform: scale(1.3, 1.3);
-
         video {
             aspect-ratio: .8;
             object-fit: cover;
@@ -29,7 +102,7 @@
         color: #fff;
         padding: 10px;
         .content-main {
-            display: flex; /*.char가 인라인태그이기때문에 컨트롤하기위해 부모에 flex*/
+            display: flex; 
             font-size: 34vw;
             white-space: nowrap;
             font-weight: 400;
@@ -45,9 +118,9 @@
         }
 
         .content-collect {
-            margin-left: 40px;
-            margin-bottom: 40px;
-            width: 250px;
+            margin-left: max(40px,8rem);
+            margin-bottom: max(40px,10rem);
+            width: max(250px,28.7rem);
             font-size: 14px;
             font-weight: 200;
             .collect-desc {
@@ -55,7 +128,7 @@
                 line-height: 143%;
                 margin-bottom: 10px;
                 .word {
-                    overflow: hidden;
+                    overflow-y: clip;
                 }
             }
             @include mobile {
@@ -74,20 +147,30 @@
             }
         }
         .content-paragraph {
-            margin-top: 100px;
             .title {
-                width: 56rem;
-                min-width: 290px;
+                width: max(290px,56rem);
                 text-align: right;
                 line-height: 1.13;
                 margin-left: 23vw;
-                font-size: 32px;
+                font-size: max(32px,6.4rem);
                 letter-spacing: -.05em;
+                .line {
+                    overflow: hidden;
+                    line-height: 1;
+                    display: inline-block;
+                }
+                
             }
             @include mobile {
                 margin-bottom: 50px;
                 .title {
                     margin-left: 15vw;
+                }
+            }
+            @include mini {
+                .title {
+                    font-size: 7.75vw;
+                    margin-left: 0;
                 }
             }
         }
@@ -96,16 +179,50 @@
             align-items: center;
             flex-direction: column;
             margin-top: 20px;
-            .recommend-product {
-                background: #f4f0ea;
-                padding: 6px;
+            .recommend-product {                
                 color: #4d3d30;
                 .link {
-                    display: block;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .thumb {
                     aspect-ratio: 1.0334346505;
                     object-fit: cover;
-                    height: 190px;
+                    height: max(34rem,190px);
                     overflow: hidden;
+                    background: #f4f0ea;
+                    padding: 6px;
+                    @include tablet {
+                    }
+                }
+                .text {
+                    display: flex;
+                    flex-direction: column;
+                    opacity: 0;
+                    transition: opacity 0.5s;
+                    font-size: max(13px,1.4rem);
+                    font-weight: 500;
+                    letter-spacing: -.03em;
+                    background: #f4f0ea;
+                    padding: 6px;
+                    @include tablet {
+                        opacity: 1;
+                    }
+
+                }
+                .name {
+                    display: flex;
+                    align-items: center;
+                    gap: max(1rem,10px);
+                    padding-block: max(3px,.4rem);
+                }
+                .price {
+                    font-weight: 900;
+                    margin-bottom: max(6px,.8rem);
+                }
+                footer {
+                    text-align: right;
+                    padding-block: max(3px,.4rem);
                 }
             }
             .title {
@@ -115,7 +232,7 @@
                 white-space: nowrap;
                 margin-top: 30px;
                 letter-spacing: -.045em;
-                font-size: 50px;
+                font-size: 9.6rem;
                 @include tablet {
                     display: none;
                 }
@@ -149,7 +266,7 @@
             display: none;
         }
         .thumb-img1{
-            width: 240px;
+            width: max(240px,34rem);
             height: auto;
             img {
                 width: 100%;
@@ -157,7 +274,7 @@
             }
         }
         .thumb-img2{
-            width: 150px;
+            width: max(150px,24rem);
             height: auto;
             position: absolute;
             top: 50%;
@@ -171,9 +288,9 @@
     .about-text {
         .title {
             display: block;
-            font-size: 24px;
             text-align: justify;
             font-weight: 400;
+            font-size: max(24px, 4rem);
             line-height: 1.3;
             letter-spacing: -.02em;
             text-transform: uppercase;
@@ -182,12 +299,12 @@
             font-weight: 300;
         }
         .desc {
-            width: 280px;
+            width: max(34rem,280px);
             text-align: justify;
             line-height: 153%;
             color: #4d3d30;
-            margin-bottom: 10px;
-            font-size: 14px;
+            margin-bottom: max(1rem,10px);
+            font-size: max(14px,1.6rem);
             font-weight: 300;
         }
     }
@@ -266,89 +383,116 @@
     }
     .showcase-list {
         display: flex;
-        align-items: center;
         justify-content: flex-start;
-        gap: 150px;
+        gap: max(150px, 25rem);
         width: fit-content;
         @include tablet {
             flex-direction: column;
             width: 100%;
             padding: 0;
         }
+        @include mobile-s {
+            gap: max(10rem,50px);
+        }
     }
     .showcase-item {
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: max(2rem,15px);
         @include tablet {
             margin-right: auto;
         }
+        @include mobile-s {
+            flex-direction: column;
+            margin-right: 0;
+        }
+
         &:nth-of-type(even){
             @include tablet {
                 flex-direction: row-reverse;
                 margin-left: auto;
                 margin-right: 0;
             }
+            @include mobile-s {
+                flex-direction: column;
+                margin-left: 0;
+            }
         }
 
         .content-thumb {
             position: relative;
-            width: 35rem;
-            min-width: 240px;
+            width: max(35rem, 240px);
+            @include mobile-s {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 951/884;
+            }
+            .wrap {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
             .back {
                 position: relative;
                 overflow: hidden;
                 width: 100%;
                 height: auto;
                 aspect-ratio: 951 / 884;
-
+                object-fit: cover;
                 img {
                     position: absolute;
                     top: 0;
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    width: 120%;
+                    width: 100%;
                     height: 100%;
-                    max-width: 120%;
+                    //max-width: 120%;
                     object-fit: cover;
                 }
             }
             .front {
                 overflow: hidden;
                 aspect-ratio: 271 / 298;
-                width: 130px;
+                width: max(19.3rem,130px);
                 position: absolute;
                 top: 100%;
                 left: 0;
                 transform: translate(70%, -70%);
-                will-change: transform;
 
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                 }
+                @include mobile-s {
+                    display: none;
+                }
             }
         }
         .content-text {
             .title {
-                font-size: 50px;
+                font-size: max(50px,9.6rem);
                 line-height: 113%;
                 letter-spacing: -.04em;
                 text-transform: uppercase;
+                text-align: center;
                 color: #4d3d30;
-                margin-bottom: 5px;
+                margin-bottom: max(5px,.5rem);
+                @include mobile-s {
+                    font-size: 14rem;
+                }
             }
         }
     }
 }
 
 .sc-showcase-about {
+    overflow: hidden;
     height: 90rem;
     min-height: 400px;
     background: #4d3d30;
-    margin: 10px;
+    margin: max(10px,1.6rem);
     position: relative;
     .about-thumb {
        position: absolute;
@@ -382,27 +526,27 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding-block: 30px;
-        padding-inline: 50px;
+        padding-block: max(5.5rem, 30px);
+        padding-inline: max(13rem, 50px);
         background: #f4f0ea;
         @include tablet {
-            padding-block: 30px;
-            padding-inline: 16px;
+            padding-block: max(4rem, 30px);
+            padding-inline: max(3rem, 16px);
         }
         p {
             font-weight: 300;
             display: block;
             margin-bottom: 1rem;
-            font-size: 14px;
+            font-size: max(14px,1.6rem);
         }
         .year {
             font-weight: 400;
-            margin-bottom: 10px;
+            margin-bottom: max(10px,1.6rem);
+            font-size: max(60px,12.8rem);
             color: #4d3d30;
-            font-size: 60px;
         }
         .more {
-            width: 250px;
+            width: max(30rem,250px);
             font-weight: 400;
             line-height: 139.5%;
             margin-bottom: calc(1.5rem + 10px);
@@ -417,7 +561,7 @@
 
     .arrival-box {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         padding-top: calc(10px + 10px);
         padding-inline: 10px;
     }
@@ -443,10 +587,11 @@
                 .title {
                     display: flex;
                     align-items: center;
-                    gap: 10px;
+                    gap: max(1rem,10px);
                     text-transform: uppercase;
                     margin-bottom: 6px;
                     line-height: 1.25;
+                    font-size: max(13px,1.4rem);
                     font-size: 13px;
                     font-weight: 500;
                     letter-spacing: -.03em;
@@ -461,8 +606,7 @@
     .arrival-bottom {
         display: flex;
         justify-content: center;
-        margin-top: 40px;
-
+        margin-top: max(40px,6rem);
     }
 }
 
@@ -488,23 +632,25 @@
             }
         }
         .col-right {
+            overflow: hidden;
             width: 25%;
-            margin-right: 30px;
+            margin-right: max(30px,4rem);
             color: #4d3d30;
             height: fit-content;
             position: sticky;
             top: 65px;
             @include tablet {
-                min-width: 280px;
+                width: max(32rem,280px);
             }
             @include mobile {
-                padding: 10px;
+                padding-inline: max(10px, 1.6rem);
+                width: 100%;
             }
             .desc {
                 font-weight: 500;
                 line-height: 1.4;
-                margin-bottom: 30px;
-                font-size: 14px;
+                margin-bottom: max(30px,4rem);
+                font-size: max(14px,1.6rem);
             }
         }
 
@@ -512,8 +658,9 @@
 }
 
 .sc-newsletter {
+    overflow: hidden;
     position: relative;
-    padding-block: 80px;
+    padding-block: max(80px,14rem) max(80px,20rem);
     
     .newsletter-text {
         text-transform: uppercase;
@@ -522,9 +669,12 @@
         line-height: 113%;
         margin-inline: auto;
         color: #4d3d30;
-        font-size: 60px;
+        font-size: max(60px,12.8rem);
         @include tablet {
             width: 90%;
+        }
+        @include mobile-s {
+            font-size: 18rem;
         }
     }
 
@@ -533,17 +683,17 @@
         justify-content: center;
         align-items: center;    
         flex-direction: column;
-        gap: 10px;
+        gap: max(10px,1.6rem);
         position: absolute;
         top: 0;
         left: 50%;
-        transform: translate(-50%, 0);
-        width: 280px;
-        height: 170px;
+        transform: translateX(-50%);
+        width: max(46rem,280px);
+        height: max(170px,21rem);
         background: #e8e0d4;
         will-change: transform;
         .card-paragraph {
-            font-size: 14px;
+            font-size: max(14px,1.6rem);
         }
         .card-input {
             margin-inline: auto;
@@ -551,32 +701,32 @@
             position: relative;
             overflow: hidden;
             @include tablet {
-                padding-inline: 10px;
+                padding-inline: max(10px,1.6rem);
             }
             fieldset {
                 border: none;
             }
             input {
                 text-indent: 6px;
-                width: 100%;
-                height: 36px;
+                width: min(100%,250px);
+                height: max(36px,4.5rem);
                 background: 0 0;
                 color: #4d3d30;
                 outline-color: #8e7867;
                 border: 1px solid #8e7867;
                 border-radius: 60px;
-                font-size: 14px;
+                font-size: max(14px,1.6rem);
             }
             .btn-submit {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 position: absolute;
-                right: 8px;
+                right: max(.8rem,8px);
                 top: 50%;
                 transform: translateY(-50%);
-                width: 24px;
-                height: 24px;
+                width: max(24px, 2.8rem);
+                height: max(24px, 2.8rem);
                 overflow: hidden;
                 background: #4d3d30;
                 border-radius: 40px;
@@ -592,10 +742,7 @@
                     transition: transform .85s var(--ease-out-expo);
                 }
             }
-
         }
-
-    }
-    
+    }   
 
 }

@@ -20,7 +20,7 @@ window.onload = function(){
     })
     asd.to('.thumb-box img',{
         delay:0.5,
-        xPercent:100,
+        xPercent:110,
         stagger:{
             from:"end",
             each:0.1,
@@ -37,22 +37,18 @@ window.onload = function(){
     $('.loading .end').delay(8000).addClass('on');
 }
 
-
+//hero
 
 const heroDescTxt = new SplitType('.sc-hero .hero-content .content-collect .collect-desc', { types: 'words, chars', });
 const heroMainTxt = new SplitType('.sc-hero .hero-content .content-main', { types: 'words, chars', });
 
 const introMotion = gsap.timeline({
     paused:true,
-    
 })
+
 introMotion
 .from('.sc-hero .hero-content .content-main .char', {yPercent:100, stagger:0.1})
 .from('.sc-hero .hero-content .content-collect .collect-desc .char', {yPercent:100, stagger:0.01})
-
-
-//const heroDescTxt = new SplitType('.sc-hero .hero-content .content-collect .collect-desc', { types: 'words', });
-
 
 
 gsap.to('.sc-hero .hero-bg',{
@@ -64,18 +60,71 @@ gsap.to('.sc-hero .hero-bg',{
         scrub:0,
     },
     scale:1,
-})
+});
 
-gsap.to('[data-scroll="object1"]',{
-    scrollTrigger:{
-        trigger:`[data-scroll="object1"]`, //기준
-        start:"0% 100%",
-        end:"100% 0%", 
-        //markers: true,
-        scrub:0,
-    },
-    yPercent: -40
-})
+
+
+let mhero = gsap.matchMedia();
+
+mhero.add("(min-width: 769px)", () => {
+
+    gsap.to('[data-scroll="object1"]',{
+        scrollTrigger:{
+            trigger:`[data-scroll="object1"]`, //기준
+            start:"0% 100%",
+            end:"100% 0%", 
+            //markers: true,
+            scrub:0,
+        },
+        yPercent: -40
+    })
+
+});
+
+let mmhero = gsap.matchMedia();
+
+mmhero.add("(min-width: 769px)", () => {
+
+    const scrollParagraph = new SplitType('.sc-hero .hero-content .content-paragraph .title', {types: 'lines, words, char',});
+    const scrollParagraph2 = new SplitType('.sc-hero-about .about-text .title', {types: 'lines, words, char',});
+    const scrollParagraph3 = new SplitType('.sc-hero-about .about-text .title', {types: 'lines, words, char',});
+    const scrollParagraph4 = new SplitType('.sc-hero-about .about-text .desc', {types: 'lines, words, char',});
+    const scrollParagraph5 = new SplitType('.sc-briefing .briefing-area .col-right .desc', {types: 'lines, words, char',});
+    const scrollParagraph6 = new SplitType('.sc-newsletter .newsletter-text', {types: 'lines, words, char',});
+    
+/*
+    scr = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.sc-hero .hero-content .content-paragraph',
+            start: "20% 100%",
+            scurb: true,
+            //markers:true,
+        },
+    })
+    scr.from ('.sc-hero .hero-content .content-paragraph .title .char',{
+        duration:1,
+        yPercent:110,
+        stagger:0.01,
+    })
+*/
+    $('[data-scroll="paragraph"]').each(function(i, el){
+        scr = gsap.timeline({
+            scrollTrigger: {
+                trigger: $(this),
+                start: "20% 100%",
+                scurb: 0,
+                //markers:true,
+            },
+        })
+        scr.from ($(this).find('.char'),{
+            duration:1,
+            yPercent:110,
+            stagger:0.005,
+        })
+    })
+});
+
+
 
 $('[data-scroll="object2"]').each(function(i, el){
     gsap.to($(this),{
@@ -90,7 +139,8 @@ $('[data-scroll="object2"]').each(function(i, el){
     })
 })
 
-//featured 복제 후 붙여넣기
+
+//featured
 marqueeEl = $('.sc-featured .featured-box').find('ul').clone();
 $('.featured-box').append(marqueeEl)
 
@@ -99,6 +149,7 @@ gsap.to('.sc-featured .featured-box ul',20, {
     xPercent:-100,
     ease:"none"
 })
+
 gsap.to('.sc-featured .featured-box',{
     scrollTrigger:{
         trigger:'.sc-featured .featured-box', //기준
@@ -143,17 +194,18 @@ mmShowcase.add("(min-width: 769px)", () => {
                 //markers:true,
             },
         })
-    
+
+        a.fromTo($(this).find('.back'),
+            { x: "10%" },
+            { x: "-10%" }
+
+        );
+
         a.to($(this).find('.front'),{     
-            xPercent:-50,
+            xPercent:-70,
+            delay: -.5
         });
-    
-        a.to($(this).find('.back img'),{     
-            xPercent:-10,
-            delay: -0.4
-        });
-        
-    
+
     })
     
    
@@ -163,33 +215,34 @@ mmShowcase.add("(max-width: 768px)", () => {
 
     
     $('.sc-showcase .showcase-item .content-thumb').each(function(){
-        
+
         b = gsap.timeline({
             scrollTrigger: {
                 trigger: $(this),
                 start: "0% 100%",
-                end: "100% 0%",
+                end: "100% -100%",
                 scrub:true,
                 //markers:true,
             },
         })
 
-        b.to($(this).find('.back img'),{     
-            yPercent:-10,
-        });
+        
+        b.fromTo($(this).find('.back'), 
+            { y:"-20%" },
+            { y:"20%" },
+        );
 
         b.to($(this).find('.front'),{     
-            yPercent:-20,
-            delay: -.3
+            yPercent:-10,
+            delay: -.5
         });
-    
-        
-        
     
     })
 
 });
-//showcase-about bg
+
+
+//showcase-about 
 gsap.fromTo('.sc-showcase-about .about-thumb .bg',{
     scale: 1.2,
     yPercent:-100,
@@ -248,17 +301,17 @@ gsap.fromTo('.sc-briefing .briefing-area .col-left img',{
 
 //newsletter
 gsap.fromTo('.sc-newsletter .newsletter-card',{
-    yPercent:150
+    yPercent:200
         
 },{
     scrollTrigger:{
         trigger:'.sc-newsletter', //기준
-        start:"50% 100%",
-        end:"0% 0%", 
+        start:"0% 100%",
+        end:"100% -100%", 
         //markers: true,
         scrub:0,
     },
-    yPercent:0
+    yPercent:-100
 })
 
 

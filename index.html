@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/header.js" defer></script>
+    <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
     <script src="./assets/js/split.min.js"></script>
     <script src="./assets/js/main.js" defer></script>
     
@@ -36,80 +37,6 @@
     <div id="skipNav">
         <a href="#main">Go to main page</a>
     </div>
-    <style>
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #f4f0ea;
-            z-index: 99;
-        }
-        .loading-inner {
-            padding: 100px;
-        }
-        .loading .text {
-            position: relative;
-            font-size: 100px;
-            text-align: center;
-            overflow: hidden;
-            color: #4d3d30;
-            font-weight: 400;
-            line-height: 113%;
-            letter-spacing: -.05em;
-        }
-        .loading .text .curr {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            text-align: center;
-        }
-        .loading .text .end {
-            opacity: 0;
-            visibility: visible;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            text-align: center;
-        }
-        .loading .text .end.on {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .loading .text .logo-text {
-            display: flex;
-            justify-content: center;
-            text-align: center;
-            transform: translateY(100%);
-        }
-        .loading .thumb-box {
-            position: relative;
-            width: 300px;
-            height: 400px;
-            margin: 0px auto;
-            overflow: hidden;
-    
-        }
-        .loading .thumb-box img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translateX(-100%);
-        }
-        
-    </style>
-
     <div class="loading">
         <div class="loading-inner">
             <div class="thumb-box">
@@ -139,7 +66,6 @@
             </div>
         </div>
     </div>
-    
     <div class="dimmed"></div>
     <header id="header">
         <nav class="header-inner">
@@ -240,20 +166,28 @@
 
                 <div data-scroll="object1">
                     <div class="content-paragraph">
-                        <p class="title">
-                            <span>WHERE STYLE</span>
+                        <p data-scroll="paragraph" class="title">
+                            WHERE STYLE
                             <br>
-                            <span>ENDURES: TIMELESS</span>
+                            ENDURES:  TIMELESS
                             <br>
-                            <span>FURNITURE FOR</span>
+                            FURNITURE  FOR
                             <br>
-                            <span>YOUR STORY</span>
+                            YOUR  STORY
                         </p>
                     </div>
                     <div class="content-recommend">
                         <div class="recommend-product">
                             <a href="" class="link">
-                                <img src="./assets/images/hero_product1.png" width="480" alt="Fully rounded table">
+                                <div class="thumb"><img src="./assets/images/hero_product1.png" width="480" alt="Fully rounded table"></div>
+                                <div class="text">
+                                    <span class="name">
+                                        Fully rounded table
+                                        <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H17.5" stroke="#4D3D30"></path></svg>
+                                    </span>
+                                    <span class="price">$940.00</span>
+                                    <footer>Product of the day</footer>
+                                </div>
                             </a>
                         </div>
                         <strong class="title">PRODUCT OF THE DAY</strong>
@@ -275,10 +209,10 @@
             </div>
 
             <div class="about-text">
-                <strong class="title">
+                <strong data-scroll="paragraph" class="title">
                     WELCOME TO OUR FURNITURE SHOP, WHERE TIMELESS AND STYLISH DESIGNS MEET STORYTELLING.
                 </strong>
-                <p class="desc">
+                <p data-scroll="paragraph" class="desc">
                     <span>Every piece of furniture in our collection</span>
                     <span>tells a personal story. Custom-designed</span>
                     <span>and personalized to enhance your home's</span>
@@ -375,11 +309,13 @@
                 <ul class="showcase-list">
                     <li class="showcase-item">
                         <div class="content-thumb">
-                            <div class="back"><img src="./assets/images/showcase_product2.png" alt="CHAIRS"></div>
+                            <div class="wrap">
+                                <div class="back"><img src="./assets/images/showcase_product2.png" alt="CHAIRS"></div>
+                            </div>
                             <div class="front"><img src="./assets/images/showcase_product1.jpg" alt="CHAIRS"></div>
                         </div>
                         <div class="content-text">
-                            <strong class="title">CHAIRS</strong>
+                            <p class="title">CHAIRS</p>
                             <a href="" class="btn-more">
                                 <span class="text">SHOP CHAIRS</span>
                                 <span class="svg">
@@ -391,7 +327,9 @@
 
                     <li class="showcase-item">
                         <div class="content-thumb">
-                            <div class="back"><img src="./assets/images/showcase_product3.png" alt="TABLES"></div>
+                            <div class="wrap">
+                                <div class="back"><img src="./assets/images/showcase_product3.png" alt="TABLES"></div>
+                            </div>
                             <div class="front"><img src="./assets/images/showcase_product4.png" alt="TABLES"></div>
                         </div>
                         <div class="content-text">
@@ -407,8 +345,10 @@
 
                     <li class="showcase-item">
                         <div class="content-thumb">
-                            <div class="back"><img src="./assets/images/showcase_product5.png" alt="LAMPS"></div>
-                            <div class="front"><img src="./assets/images/showcase_product6.webp" alt="LAMPS"></div>
+                            <div class="wrap">
+                                <div class="back"><img src="./assets/images/showcase_product7.png" alt="LAMPS"></div>
+                            </div>
+                            <div class="front"><img src="./assets/images/showcase_product5.png" alt="LAMPS"></div>
                         </div>
                         <div class="content-text">
                             <p class="title">LAMPS</p>
@@ -423,8 +363,10 @@
 
                     <li class="showcase-item">
                         <div class="content-thumb">
-                            <div class="back"><img src="./assets/images/showcase_product7.png" alt="SHELVES"></div>
-                            <div class="front"><img src="./assets/images/showcase_product8.webp" alt="SHELVES"></div>
+                            <div class="wrap">
+                                <div class="back"><img src="./assets/images/showcase_product8.webp" alt="SHELVES"></div>
+                            </div>
+                            <div class="front"><img src="./assets/images/showcase_product6.webp" alt="SHELVES"></div>
                         </div>
                         <div class="content-text">
                             <p class="title">SHELVES</p>
@@ -557,7 +499,7 @@
             <div class="briefing-area"> 
                 <div class="col-left"><img src="./assets/images/briefing1.png" alt></div>
                 <div class="col-right">
-                    <p class="desc">
+                    <p data-scroll="paragraph" class="desc">
                         At Props, we believe that your space should be your sanctuary. We are committed to creating furniture that transcends being just props and actively contributes to that.
                     </p>
                     <a href="" class="btn-more">
@@ -571,11 +513,8 @@
         </section>
 
         <section class="sc-newsletter">
-            <h2 class="newsletter-text">
-                <span>SUBSCRIBE</span>
-                <span>TO</span>
-                <span>OUR</span>
-                <span>NEWSLETTER</span>
+            <h2 data-scroll="paragraph" class="newsletter-text">
+                SUBSCRIBE TO OUR NEWSLETTER
             </h2>
             <div class="newsletter-card">
                 <p class="card-paragraph">

@@ -24,11 +24,15 @@
 
 .footer-content {
     position: relative;
+    overflow: hidden;
     padding: 10px;
     display: grid;
     grid-template-columns: .57fr 1fr;
     grid-gap: 30px;
     gap: 30px;
+    @include mini {
+        grid-template-columns: 1fr;
+    }
     .content-navi {
         display: grid;
         grid-template-columns: repeat(4,1fr);
@@ -51,6 +55,9 @@
     }
     .content-sns {
         text-align: right;
+        @include mini {
+            text-align: left;
+        }
         ul {
             li{
                 margin-bottom: 8px;
@@ -71,16 +78,20 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    padding: 15rem 0;
+    padding-block: max(80px,15rem);
     color: #f4f0ea;
     text-transform: uppercase;
     font-size: 60px;
+    @include mobile-s {
+        font-size: 18rem;
+    }
 }
 .aside {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     color: #fff;
     background: rgba(12,21,20,.3);
     padding: 0 10px;

@@ -10,3 +10,14 @@
         @content;
     }
 }
+@mixin mobile-s{
+    @media (max-width: 480px) {
+        @content;
+    }
+
+}
+@mixin mini {
+    @media (max-width:370px) {
+        @content;
+    }
+}
