@@ -89,7 +89,7 @@ mmhero.add("(min-width: 769px)", () => {
     const scrollParagraph2 = new SplitType('.sc-hero-about .about-text .title', {types: 'lines, words, char',});
     const scrollParagraph3 = new SplitType('.sc-hero-about .about-text .title', {types: 'lines, words, char',});
     const scrollParagraph4 = new SplitType('.sc-hero-about .about-text .desc', {types: 'lines, words, char',});
-    const scrollParagraph5 = new SplitType('.sc-briefing .briefing-area .col-right .desc', {types: 'lines, words, char',});
+    const scrollParagraph5 = new SplitType('.sc-briefing .briefing-area .col-right .desc', {types: 'words, char',});
     const scrollParagraph6 = new SplitType('.sc-newsletter .newsletter-text', {types: 'lines, words, char',});
     
 /*

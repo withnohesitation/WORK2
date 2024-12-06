@@ -1389,6 +1389,9 @@ body.hidden .dimmed {
   margin-bottom: max(30px, 4rem);
   font-size: max(14px, 1.6rem);
 }
+.sc-briefing .briefing-area .col-right .desc .word {
+  overflow: hidden;
+}
 
 .sc-newsletter {
   overflow: hidden;
